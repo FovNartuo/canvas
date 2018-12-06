@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>七巧板</title>
+    <style>
+        #canvas{
+            display: block;
+            border: 1px solid #fff;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas">
+        alternative content for browsers without canvas support
+    </canvas>
+
+    <script>
+        var trangram=[
+            {p:[{x:0,y:0},{x:800,y:0},{x:400,y:400}],color:"#caff67"},
+            {p:[{x:0,y:0},{x:400,y:400},{x:0,y:800}],color:"#61b7d2"},
+            {p:[{x:800,y:0},{x:800,y:400},{x:600,y:600},{x:600,y:200}],color:"#ff5063"},
+            {p:[{x:600,y:200},{x:600,y:600},{x:400,y:400}],color:"#feea13"},
+            {p:[{x:400,y:400},{x:600,y:600},{x:400,y:800},{x:200,y:600}],color:"#a597c2"},
+            {p:[{x:200,y:600},{x:400,y:800},{x:0,y:800}],color:"#ff9ccf"},
+            {p:[{x:800,y:400},{x:800,y:800},{x:400,y:800}],color:"#fdc521"}
+        ];
+
+        var canvas=document.getElementById("canvas");
+        canvas.width=1024;
+        canvas.height=800;
+        var context=canvas.getContext("2d");
+
+        for(var i=0; i<trangram.length; i++){
+            draw(trangram[i],context);
+        }
+
+        function draw(place,context){
+            context.beginPath();
+            context.moveTo(place.p[0].x,place.p[0].y);
+            for(var i=1; i<place.p.length; i++){
+                context.lineTo(place.p[i].x,place.p[i].y);
+            }
+            context.closePath();
+
+            context.fillStyle=place.color;
+            context.fill();
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>弧线,圆形小球</title>
+    <style>
+        #canvas{
+            display: block;
+            border: 1px solid #ccc;
+            margin: 20px auto
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas">
+        alternative content for browsers without canvas support
+    </canvas>
+
+    <script>
+        // draw an arc
+        // context.arc(
+        //     centerx,centery,radius,      圆形坐标(x,y),半径
+        //     startingAngle,endingAngle,   起始弧度值,结束弧度值
+        //     anticlockwise=false          可选,顺时针/逆时针
+        // )
+
+        var canvas=document.getElementById("canvas");
+        canvas.width=800;
+        canvas.height=500;
+        var context=canvas.getContext("2d");
+
+        context.lineWidth=3;
+        context.strokeStyle="058";
+
+        for(var i=0; i<6; i++){
+            context.beginPath();
+            context.arc(i*100+50,300,40,0,2*Math.PI*(i+1)/10,true);
+            context.closePath();    //closePath()会自动将首尾连接
+            context.stroke();
+               
+        }
+        
+
+    </script>
+</body>
+</html>

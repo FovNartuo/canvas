@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>绘制三角形</title>
+    <style>
+        #canvas{
+            display: block;
+            border: 1px solid #ccc;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas">
+        alternative content for browsers without canvas support
+    </canvas>
+
+    <script>
+        var canvas=document.getElementById("canvas");
+        
+        // 设置画图的宽高
+        canvas.width=1024;
+        canvas.height=500;
+        
+        // 绘图的上下文环境，绘图基于context
+        var context=canvas.getContext("2d");
+        
+        // 设置绘图的状态
+        context.moveTo(100,100);    //起点
+        context.lineTo(400,400);    //终点
+        context.lineTo(100,400);
+        context.lineTo(100,100);
+
+        context.lineWidth=2;        //线条的宽度
+        context.strokeStyle="#058"; //线条样式(颜色)
+        
+        context.fillStyle="rgb(2,100,30)";    //新的状态,填充多边形
+
+        // 调用stroke函数进行绘制
+        context.stroke();
+        // 调用fill函数进行填充
+        context.fill();
+    </script>
+</body>
+</html>
